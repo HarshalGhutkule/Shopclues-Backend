@@ -44,10 +44,8 @@ app.post(
 app.post("/login", login);
 
 const userController = require("./controllers/user.controller");
-const postController = require("./controllers/post.controller");
 
 app.use("/users", userController);
-app.use("/posts", postController);
 
 app.listen(2349, async () => {
   try {

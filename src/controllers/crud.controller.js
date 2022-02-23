@@ -1,7 +1,5 @@
 const get = (model) => async (req, res) => {
   try {
-    //lean() convert mongoose obj into json obj
-    //mongoose does not return proper promise that's why we use exec()
     const items = await model.find().lean().exec();
     return res.status(200).send(items);
   } catch (err) {
@@ -29,7 +27,6 @@ const getOne = (model) => async (req, res) => {
 
 const patch = (model) => async (req, res) => {
   try {
-    //new is to show updated data or return updated data
     const items = await model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
