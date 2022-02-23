@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema(
       phonenumber: { type: Number},
       house: { type: String},
       street: { type: String},
-      val: { type: String},
       gst: { type: String },
+      val: { type: String}
     },
   },
   {

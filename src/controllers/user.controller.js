@@ -6,11 +6,13 @@ const User = require("../models/user.model");
 
 const userController = require("../controllers/crud.controller");
 
+const authenticate = require("../middleware/authenticate");
+
 // router.get("", userController(User).get);
 
 router.post("", userController(User).post);
 
-router.get("/:id", userController(User).getOne);
+router.get("/:id", authenticate, userController(User).getOne);
 
 router.get("", async (req, res) => {
     try {
@@ -21,7 +23,16 @@ router.get("", async (req, res) => {
     }
   });
 
-router.patch("/:id", userController(User).patch);
+router.patch("/:id", authenticate, async (req, res) => {
+  try {
+    const items = await User.findByIdAndUpdate(req.params.id, {$set:{address:req.body}}, {
+      new: true,
+    });
+    return res.status(201).send(items);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
 
 router.delete("/:id", userController(User).delete);
 
