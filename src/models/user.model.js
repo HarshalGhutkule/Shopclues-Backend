@@ -19,6 +19,8 @@ const userSchema = new mongoose.Schema(
       gst: { type: String },
       val: { type: String}
     },
+    firstName:{ type: String},
+    lastName:{ type: String},
   },
   {
     versionKey: false,

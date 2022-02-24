@@ -8,26 +8,57 @@ const userController = require("../controllers/crud.controller");
 
 const authenticate = require("../middleware/authenticate");
 
-// router.get("", userController(User).get);
-
 router.post("", userController(User).post);
 
 router.get("/:id", authenticate, userController(User).getOne);
 
 router.get("", async (req, res) => {
-    try {
-      const items = await User.findOne({username:req.query.username}).lean().exec();
+  try {
+    if (req.query.username) {
+      const items = await User.findOne({ username: req.query.username })
+        .lean()
+        .exec();
       return res.status(200).send(items);
-    } catch (err) {
-      return res.status(500).send(err.message);
+    } else {
+      const items = await User.find().lean().exec();
+      return res.status(200).send(items);
     }
-  });
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
 
 router.patch("/:id", authenticate, async (req, res) => {
   try {
-    const items = await User.findByIdAndUpdate(req.params.id, {$set:{address:req.body}}, {
-      new: true,
-    });
+    const items = await User.findByIdAndUpdate(
+      req.params.id,
+      { $set: { address: req.body } },
+      {
+        new: true,
+      }
+    );
+    return res.status(201).send(items);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
+
+router.patch("/update/:id", authenticate, async (req, res) => {
+  try {
+    const items = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          number: req.body.number,
+        },
+      },
+      {
+        new: true,
+      }
+    );
     return res.status(201).send(items);
   } catch (err) {
     return res.status(500).send(err.message);

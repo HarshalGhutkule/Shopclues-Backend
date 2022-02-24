@@ -6,7 +6,15 @@ const connect = require("./configs/db");
 
 const { body } = require("express-validator");
 
-const { register, login } = require("./controllers/auth.controller");
+const {
+  register,
+  login,
+  resetPassword,
+} = require("./controllers/auth.controller");
+
+const userController = require("./controllers/user.controller");
+
+const orderController = require("./controllers/order.controller");
 
 const app = express();
 
@@ -43,9 +51,23 @@ app.post(
 );
 app.post("/login", login);
 
-const userController = require("./controllers/user.controller");
+app.patch(
+  "/reset/:id",
+  body("newPassword")
+    .isString()
+    .custom(async (value) => {
+      let pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+      if (pattern.test(value)) {
+        return true;
+      }
+      throw new Error("Password is not strong");
+    }),
+  resetPassword
+);
 
 app.use("/users", userController);
+
+app.use("/orders", orderController);
 
 app.listen(2349, async () => {
   try {
