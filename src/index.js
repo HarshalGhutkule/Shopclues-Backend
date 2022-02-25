@@ -16,6 +16,10 @@ const userController = require("./controllers/user.controller");
 
 const orderController = require("./controllers/order.controller");
 
+const cartController = require("./controllers/cart.controller");
+
+const mobileController = require("./controllers/mobile.controller");
+
 const app = express();
 
 app.use(cors());
@@ -68,6 +72,10 @@ app.patch(
 app.use("/users", userController);
 
 app.use("/orders", orderController);
+
+app.use("/carts", cartController);
+
+app.use("/mobiles", mobileController);
 
 app.listen(2349, async () => {
   try {
