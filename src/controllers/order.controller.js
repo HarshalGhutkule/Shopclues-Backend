@@ -26,7 +26,7 @@ router.post("", authenticate, async(req,res)=>{
         const user_id = req.user._id;
         const order = await Order.create({
             image:req.body.image,
-            product_name:req.body.product_name,
+            title:req.body.title,
             price:req.body.price,
             user_id:user_id
         });
