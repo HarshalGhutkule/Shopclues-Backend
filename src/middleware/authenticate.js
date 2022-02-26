@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const compareToken = (token) => {
   return new Promise((resolve, reject) => {
-    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
+    jwt.verify(token, "masaischool", (err, user) => {
       if (err) return reject(err);
       return resolve(user);
     });

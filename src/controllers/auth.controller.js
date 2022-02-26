@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 const {validationResult} = require("express-validator");
 
 const createToken = (user) => {
-  return jwt.sign({ user }, process.env.JWT_SECRET_KEY);
+  return jwt.sign({ user }, "masaischool");
 };
 
 const register = async (req, res) => {
