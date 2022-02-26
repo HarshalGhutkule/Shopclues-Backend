@@ -77,7 +77,7 @@ app.use("/carts", cartController);
 
 app.use("/mobiles", mobileController);
 
-app.listen(2349, async () => {
+app.listen(process.env.PORT || 3001, '0.0.0.0', async () => {
   try {
     await connect();
     console.log("listning to port 2349");
@@ -85,3 +85,12 @@ app.listen(2349, async () => {
     console.log(err);
   }
 });
+
+// app.listen(2349, async () => {
+//   try {
+//     await connect();
+//     console.log("listning to port 2349");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
