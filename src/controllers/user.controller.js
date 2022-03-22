@@ -12,7 +12,7 @@ router.post("", userController(User).post);
 
 router.get("/:id", authenticate, userController(User).getOne);
 
-router.get("", async (req, res) => {
+router.get("", authenticate, async (req, res) => {
   try {
     if (req.query.username) {
       const items = await User.findOne({ username: req.query.username })
