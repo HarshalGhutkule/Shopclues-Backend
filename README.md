@@ -1,41 +1,8 @@
 # Backend of Shopclues
 
-Shopclues is one of the most famous e-commerce sites in india.
-A collaborative project built by a team of 5 executed in 5days.
+Backend API for a shopclues clone website, built using NodeJS, Express, Mongoose, MongoDB Atlas and AWS EC2, Heroku for storage.
 
-## How to run the app?
-- Clone the repo and run the app.
-    - https://github.com/HarshalGhutkule/shopclues.com-backend.git
-- Execute `npm run server` command in your CLI, and enjoy exploring different technical courses on the go. Happy Learning!
-## Built with
-- Node.js
-- Express: A flexible Node.js web application framework
-- Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js
-- MongoDB Atlas: A fully-managed cloud database developed by the same people that build MongoDB
-- HTML
-- CSS
-- JavaScript
-## Created Pages
-- User Page
-- Payment Gateway [Paytm API]
-- Landing Page
-- Sign in Page
-- Product Listing Page
-- Product Details Page
-- Cart Page
-- Cart Review Page
-- Checkout Page
-## Functionalities Added
-- Added API for Mobiles Products
-- Added API for each user Signin
-- Added API for user Page
-- For payment gateway, we used Paytm payment API
-- Dynamic checkout page
-- Users can sort and filter products according to their requirements
-- Discount/offer redemption
-- Functionality to buy a Item
-- Functionality to view Item Details
-- Functionality to add a Items in cart
+# Documentation for API?
 
 ## Team Members
 - [Vipin Awadhiya](https://github.com/Vipin115)
