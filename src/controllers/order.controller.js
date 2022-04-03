@@ -21,7 +21,7 @@ router.get("/:id", authenticate, async (req, res) => {
 
 router.patch("/:id", orderController(Order).patch);
 
-router.post("", authenticate, async(req,res)=>{
+router.post("", async(req,res)=>{
     try{
         const user_id = req.user._id;
         const order = await Order.create({
