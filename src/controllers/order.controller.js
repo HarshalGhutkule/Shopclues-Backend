@@ -23,12 +23,12 @@ router.patch("/:id", orderController(Order).patch);
 
 router.post("", async(req,res)=>{
     try{
-        const user_id = req.user._id;
+    //     const user_id = req.user._id;
         const order = await Order.create({
             image:req.body.image,
             product_name:req.body.product_name,
-            price:req.body.price,
-            user_id:user_id
+            price:req.body.price
+            // user_id:user_id
         });
         return res.status(200).send(order);
     }
